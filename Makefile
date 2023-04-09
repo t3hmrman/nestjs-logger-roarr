@@ -100,12 +100,8 @@ package: clean build target-dir # package the project
 >	mv $(PACKAGE_FILENAME) $(TARGET_DIR)/
 
 publish-prerelease: package # package & publish a pre-release to NPM
->	$(PNPM) publish \
-	--tag pre \
-	$(PACKAGE_PATH)
+>	$(PNPM) publish $(PACKAGE_PATH) --tag pre
 
 publish: package # package & publish to NPM
->	$(PNPM) publish \
-	--tag latest \
-	$(PACKAGE_PATH)
+>	$(PNPM) publish $(PACKAGE_PATH) --tag latest
 
