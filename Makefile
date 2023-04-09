@@ -22,7 +22,8 @@ endif
 >	build build-watch \
 >	lint lint-watch \
 >	test test-unit \
->	target-dir publish publish-prerelease
+>	target-dir publish publish-prerelease \
+> version-bump-major version-bump-minor version-bump-patch version-bump-prerelease
 
 all: install build
 
@@ -88,6 +89,18 @@ PACKAGE_PATH ?= $(PACKAGE_FILENAME)
 print-package-filename: # print package filename
 > @echo "$(PACKAGE_FILENAME)"
 
+version-bump-prerelease:
+>	$(PNPM) version prerelease --preid=rc
+
+version-bump-major:
+>	$(PNPM) version major
+
+version-bump-minor:
+>	$(PNPM) version minor
+
+version-bump-patch:
+>	$(PNPM) version patch
+
 # NOTE: if you try to test this package locally (ex. using `pnpm add path/to/nodejs-logger-roarr-<version>.tgz`),
 # you will have to `pnpm cache clean` between every update.
 # as one command: `pnpm cache clean && pnpm remove nodejs-logger-roarr && pnpm add path/to/nodejs-logger-roarr-v0.1.0.tgz`
@@ -99,4 +112,3 @@ publish-prerelease: package # package & publish a pre-release to NPM
 
 publish: package # package & publish to NPM
 >	$(PNPM) publish $(PACKAGE_PATH) --tag latest
-
