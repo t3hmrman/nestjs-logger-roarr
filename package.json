@@ -35,7 +35,7 @@
   },
   "author": "vados <vados@vadosware.io>",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "devDependencies": {
     "@nestjs/testing": "^9.4.0",
     "@types/roarr": "^2.14.3",
