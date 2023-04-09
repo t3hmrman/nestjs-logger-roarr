@@ -107,8 +107,5 @@ version-bump-patch:
 package: clean build # package the project
 >	$(PNPM) pack
 
-publish-prerelease: package # package & publish a pre-release to NPM
->	$(PNPM) publish $(PACKAGE_PATH) --tag pre
-
 publish: package # package & publish to NPM
->	$(PNPM) publish $(PACKAGE_PATH) --tag latest
+>	$(PNPM) publish $(PACKAGE_PATH)
