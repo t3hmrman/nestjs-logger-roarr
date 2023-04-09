@@ -94,14 +94,17 @@ version-bump-prerelease:
 
 version-bump-major:
 > $(MAKE) changelog
+> $(GIT) commit -am "chore(release): update CHANGELOG"
 >	$(PNPM) version major
 
 version-bump-minor:
 > $(MAKE) changelog
+> $(GIT) commit -am "chore(release): update CHANGELOG"
 >	$(PNPM) version minor
 
 version-bump-patch:
 > $(MAKE) changelog
+> $(GIT) commit -am "chore(release): update CHANGELOG"
 >	$(PNPM) version patch
 
 # NOTE: if you try to test this package locally (ex. using `pnpm add path/to/nodejs-logger-roarr-<version>.tgz`),
