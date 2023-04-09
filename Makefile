@@ -92,9 +92,9 @@ target-dir:
 print-package-filename: # print package filename
 > @echo "$(PACKAGE_FILENAME)"
 
-# NOTE: if you try to test this package locally (ex. using `pnpm add path/to/async-wait-for-promise-<version>.tgz`),
+# NOTE: if you try to test this package locally (ex. using `pnpm add path/to/nodejs-logger-roarr-<version>.tgz`),
 # you will have to `pnpm cache clean` between every update.
-# as one command: `pnpm cache clean && pnpm remove async-wait-for-promise && pnpm add path/to/async-wait-for-promise-v0.1.0.tgz`
+# as one command: `pnpm cache clean && pnpm remove nodejs-logger-roarr && pnpm add path/to/nodejs-logger-roarr-v0.1.0.tgz`
 package: clean build target-dir # package the project
 >	$(PNPM) pack
 >	mv $(PACKAGE_FILENAME) $(TARGET_DIR)/
