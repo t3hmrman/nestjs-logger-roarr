@@ -1,0 +1,50 @@
+{
+  "name": "nestjs-logger-roarr",
+  "contributors": [
+    {
+      "name": "Victor Adossi",
+      "email": "vados@vadosware.io",
+      "url": "https://vadosware.io"
+    }
+  ],
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "version": "0.1.0",
+  "description": "Roarr integration for NestJS Logging (compatible with ConsoleLogger and LoggerService)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/t3hmrman/nestjs-logger-roarr"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "build-watch": "tsc -w -p tsconfig.json",
+    "build-production": "tsc -p tsconfig.build.json",
+    "clean": "rimraf ./dist",
+    "test-unit": "vitest run -c vitest.unit.ts",
+    "test-int": "vitest run -c vitest.int.ts",
+    "test-coverage": "vitest run -c vitest.coverage.ts"
+  },
+  "keywords": [
+    "nestjs",
+    "logging",
+    "logs",
+    "roarr"
+  ],
+  "peerDependencies": {
+    "@nestjs/common": "^9"
+  },
+  "author": "vados <vados@vadosware.io>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@nestjs/testing": "^9.4.0",
+    "@types/roarr": "^2.14.3",
+    "@vitest/coverage-istanbul": "^0.29.8",
+    "typescript": "^5.0.4",
+    "vitest": "^0.29.8"
+  },
+  "dependencies": {
+    "@nestjs/common": "^9.4.0",
+    "roarr": "^7.15.0"
+  }
+}
