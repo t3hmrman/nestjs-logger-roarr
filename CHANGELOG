@@ -1,0 +1,13 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+## [0.1.0] - 2023-04-09
+
+### Documentation
+
+- Add note about setting ROARR_LOG
+
+### Miscellaneous Tasks
+
+- Initial commit, ready to release v0.1.0
+
