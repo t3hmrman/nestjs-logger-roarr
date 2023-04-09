@@ -93,12 +93,15 @@ version-bump-prerelease:
 >	$(PNPM) version prerelease --preid=rc
 
 version-bump-major:
+> $(MAKE) changelog
 >	$(PNPM) version major
 
 version-bump-minor:
+> $(MAKE) changelog
 >	$(PNPM) version minor
 
 version-bump-patch:
+> $(MAKE) changelog
 >	$(PNPM) version patch
 
 # NOTE: if you try to test this package locally (ex. using `pnpm add path/to/nodejs-logger-roarr-<version>.tgz`),
