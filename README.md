@@ -18,6 +18,8 @@ pnpm install nestjs-logger-roarr
 
 ### Setup
 
+> **NOTE** Do not forget to set `ROARR_LOG=true` otherwise you will see no log messages!
+
 To use the *same* logger for lower level NestJS code and your own:
 
 ```typescript
