@@ -83,7 +83,7 @@ test-int: check-tool-pnpm # run integration tests
 #############
 
 PACKAGE_FILENAME ?= $(PACKAGE_NAME)-$(VERSION).tgz
-PACKAGE_PATH ?= $(TARGET_DIR)/$(PACKAGE_FILENAME)
+PACKAGE_PATH ?= $(PACKAGE_FILENAME)
 
 print-package-filename: # print package filename
 > @echo "$(PACKAGE_FILENAME)"
