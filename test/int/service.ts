@@ -3,12 +3,12 @@ import { LoggerModuleOptions, LoggerOptionsFactory } from "../logger.interfaces"
 import { Test, TestingModule } from "@nestjs/testing";
 
 import { RoarrLoggerModule } from "../../lib/module";
-import { Service } from "../../lib/service";
+import { RoarrLoggerService } from "../../lib/service";
 import { MODULE_TOKEN } from "../../lib/constants";
 
 const LOG_MSG = "test-msg";
 
-describe('Service', () => {
+describe('RoarrLoggerService', () => {
   let config: RoarrLoggerModuleOptions = {
     environment: 'test',
   };
@@ -17,13 +17,13 @@ describe('Service', () => {
     debug: "yes",
   };
 
-  class TestService implements LoggerOptionsFactory {
+  class TestRoarrLoggerService implements LoggerOptionsFactory {
     createOptions(): RoarrLoggerModuleOptions {
       return config;
     }
   }
 
-  class InvalidService implements LoggerOptionsFactory {
+  class InvalidRoarrLoggerService implements LoggerOptionsFactory {
     createOptions(): RoarrLoggerModuleOptions {
       return invalidConfig;
     }
@@ -44,43 +44,43 @@ describe('Service', () => {
     mod = await Test.createTestingModule({
       imports: [
         RoarrLoggerModule.forRootAsync({
-          useClass: InvalidService
+          useClass: InvalidRoarrLoggerService
         })
       ]
     }).compile();
 
-    const fail = mod.get<Service>(MODULE_TOKEN);
+    const fail = mod.get<RoarrLoggerService>(MODULE_TOKEN);
     fail.log(LOG_MSG);
     expect(fail.log).toBeInstanceOf(Function);
   });
 
   test('log()', async () => {
-    const logger = mod.get<Service>(MODULE_TOKEN);
+    const logger = mod.get<RoarrLoggerService>(MODULE_TOKEN);
     expect(() => logger.log(LOG_MSG)).not.toThrowError();
   });
 
   test('error()', async () => {
-    const logger = mod.get<Service>(MODULE_TOKEN);
+    const logger = mod.get<RoarrLoggerService>(MODULE_TOKEN);
     expect(() => logger.error('logger:error')).not.toThrowError();
   });
 
   test('verbose ())', async () => {
-    const logger = mod.get<Service>(MODULE_TOKEN);
+    const logger = mod.get<RoarrLoggerService>(MODULE_TOKEN);
     expect(() => logger.verbose('logger:verbose','context:verbose')).not.toThrowError();
   });
 
   test('debug()', async () => {
-    const logger = mod.get<Service>(MODULE_TOKEN);
+    const logger = mod.get<RoarrLoggerService>(MODULE_TOKEN);
     expect(() => logger.debug('logger:debug','context:debug')).not.toThrowError();
   });
 
   test('warn()', async () => {
-    const logger = mod.get<Service>(MODULE_TOKEN);
+    const logger = mod.get<RoarrLoggerService>(MODULE_TOKEN);
     expect (() => logger.warn('logger:warn','context:warn')).not.toThrowError();
   });
 
   test('exception handling', async () => {
-    const logger = mod.get<Service>(MODULE_TOKEN);
+    const logger = mod.get<RoarrLoggerService>(MODULE_TOKEN);
     expect(logger.log).toThrowError();
     try {
       throw new Error("THROW");
@@ -97,9 +97,9 @@ describe('Service', () => {
       ],
     }).compile();
 
-    const logger = mod.get<Service>(MODULE_TOKEN);
+    const logger = mod.get<RoarrLoggerService>(MODULE_TOKEN);
     expect(logger).toBeDefined();
-    expect(logger).toBeInstanceOf(Service);
+    expect(logger).toBeInstanceOf(RoarrLoggerService);
 
     try {
       logger.warn('This will throw an exception');
@@ -117,9 +117,9 @@ describe('Service', () => {
       })],
     }).compile();
 
-    const logger = mod.get<Service>(MODULE_TOKEN);
+    const logger = mod.get<RoarrLoggerService>(MODULE_TOKEN);
     expect(logger).toBeDefined();
-    expect(logger).toBeInstanceOf(Service);
+    expect(logger).toBeInstanceOf(RoarrLoggerService);
 
     try {
       logger.error('This will throw an exception');
@@ -137,9 +137,9 @@ describe('Service', () => {
       })],
     }).compile();
 
-    const logger = mod.get<Service>(MODULE_TOKEN);
+    const logger = mod.get<RoarrLoggerService>(MODULE_TOKEN);
     expect(logger).toBeDefined();
-    expect(logger).toBeInstanceOf(Service);
+    expect(logger).toBeInstanceOf(RoarrLoggerService);
 
     try {
       logger.debug('This will throw an exception');
@@ -157,9 +157,9 @@ describe('Service', () => {
       })],
     }).compile();
 
-    const logger = mod.get<Service>(MODULE_TOKEN);
+    const logger = mod.get<RoarrLoggerService>(MODULE_TOKEN);
     expect(logger).toBeDefined();
-    expect(logger).toBeInstanceOf(Service);
+    expect(logger).toBeInstanceOf(RoarrLoggerService);
 
     try {
       logger.log('This will throw an exception');

@@ -20,9 +20,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var Service_1;
+var RoarrLoggerService_1;
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Service = void 0;
+exports.RoarrLoggerService = void 0;
 const roarr_1 = require("roarr");
 const common_1 = require("@nestjs/common");
 const constants_1 = require("./constants");
@@ -34,7 +34,7 @@ const LOG_LEVEL_LOOKUP = {
     'warn': 40,
     'error': 50,
 };
-let Service = Service_1 = class Service extends common_1.ConsoleLogger {
+let RoarrLoggerService = RoarrLoggerService_1 = class RoarrLoggerService extends common_1.ConsoleLogger {
     constructor(opts) {
         var _a;
         super();
@@ -59,10 +59,10 @@ let Service = Service_1 = class Service extends common_1.ConsoleLogger {
         this.logger = roarr_1.Roarr.child(Object.assign({}, Object.fromEntries(this.ctx)));
     }
     static sharedInstance(options) {
-        if (!Service_1.singleton) {
-            Service_1.singleton = new Service_1(options);
+        if (!RoarrLoggerService_1.singleton) {
+            RoarrLoggerService_1.singleton = new RoarrLoggerService_1(options);
         }
-        return Service_1.singleton;
+        return RoarrLoggerService_1.singleton;
     }
     printMessages(messages, context = '', level = 'log', writeStreamType) {
         messages.forEach(obj => {
@@ -126,9 +126,9 @@ let Service = Service_1 = class Service extends common_1.ConsoleLogger {
         });
     }
 };
-Service = Service_1 = __decorate([
+RoarrLoggerService = RoarrLoggerService_1 = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, common_1.Inject)(constants_1.MODULE_OPTIONS)),
     __metadata("design:paramtypes", [types_1.ModuleOptions])
-], Service);
-exports.Service = Service;
+], RoarrLoggerService);
+exports.RoarrLoggerService = RoarrLoggerService;

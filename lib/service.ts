@@ -16,9 +16,9 @@ const LOG_LEVEL_LOOKUP: Record<LogLevel, number> = {
 };
 
 @Injectable()
-export class Service extends ConsoleLogger implements OnApplicationShutdown {
+export class RoarrLoggerService extends ConsoleLogger implements OnApplicationShutdown {
   public app = 'nestjs-logger-roarr';
-  private static singleton: Service;
+  private static singleton: RoarrLoggerService;
 
   public logger: RoarrLogger;
   protected onClose: () => Promise<void> = () => Promise.resolve();
@@ -50,11 +50,11 @@ export class Service extends ConsoleLogger implements OnApplicationShutdown {
   }
 
   // Create a singleton of this service
-  public static sharedInstance(options?: ModuleOptions): Service {
-    if (!Service.singleton) {
-      Service.singleton = new Service(options);
+  public static sharedInstance(options?: ModuleOptions): RoarrLoggerService {
+    if (!RoarrLoggerService.singleton) {
+      RoarrLoggerService.singleton = new RoarrLoggerService(options);
     }
-    return Service.singleton;
+    return RoarrLoggerService.singleton;
   }
 
   protected printMessages(

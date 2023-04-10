@@ -4,7 +4,7 @@ import { Module } from '@nestjs/common';
 
 import { RoarrLoggerModule } from '../../lib/module';
 import { ModuleOptions, OptionsFactory } from '../../lib/types';
-import { Service } from '../../lib/service';
+import { RoarrLoggerService } from '../../lib/service';
 import { MODULE_TOKEN } from '../../lib/constants';
 
 describe('Module', () => {
@@ -13,7 +13,7 @@ describe('Module', () => {
   }
 
   // create a service service that does notthing but create
-  class TestService implements OptionsFactory {
+  class TestRoarrLoggerService implements OptionsFactory {
     createOptions(): ModuleOptions {
       return config;
     }
@@ -21,8 +21,8 @@ describe('Module', () => {
 
   // Create a module that uses the test service
   @Module({
-    exports: [TestService],
-    providers: [TestService]
+    exports: [TestRoarrLoggerService],
+    providers: [TestRoarrLoggerService]
   })
   class TestModule {}
 
@@ -31,9 +31,9 @@ describe('Module', () => {
       imports: [ RoarrLoggerModule.forRoot(config) ],
     }).compile();
 
-    const logger = mod.get<Service>(MODULE_TOKEN);
+    const logger = mod.get<RoarrLoggerService>(MODULE_TOKEN);
     expect(logger).toBeDefined();
-    expect(logger).toBeInstanceOf(Service);
+    expect(logger).toBeInstanceOf(RoarrLoggerService);
   });
 
 
@@ -41,14 +41,14 @@ describe('Module', () => {
     const mod = await Test.createTestingModule({
       imports: [
         RoarrLoggerModule.forRootAsync({
-          useClass: TestService
+          useClass: TestRoarrLoggerService
         })
       ]
     }).compile();
 
-    const logger = mod.get<Service>(MODULE_TOKEN);
+    const logger = mod.get<RoarrLoggerService>(MODULE_TOKEN);
     expect(logger).toBeDefined();
-    expect(logger).toBeInstanceOf(Service);
+    expect(logger).toBeInstanceOf(RoarrLoggerService);
   });
 
   test('forRootAsync() w/ useFactory', async () => {
@@ -60,8 +60,8 @@ describe('Module', () => {
       ]
     }).compile();
 
-    const logger = mod.get<Service>(MODULE_TOKEN);
+    const logger = mod.get<RoarrLoggerService>(MODULE_TOKEN);
     expect(logger).toBeDefined();
-    expect(logger).toBeInstanceOf(Service);
+    expect(logger).toBeInstanceOf(RoarrLoggerService);
   });
 });

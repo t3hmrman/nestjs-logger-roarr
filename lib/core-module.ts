@@ -10,7 +10,7 @@ import {
   ModuleOptionsFactory,
   ModuleOptions,
 } from './types';
-import { Service } from './service';
+import { RoarrLoggerService } from './service';
 import { createProvider } from './provider';
 import { MODULE_OPTIONS, MODULE_TOKEN } from './constants';
 
@@ -23,8 +23,8 @@ export class RoarrLoggerCoreModule {
 
     return {
       module: RoarrLoggerCoreModule,
-      exports: [provider, Service],
-      providers: [provider, Service],
+      exports: [provider, RoarrLoggerService],
+      providers: [provider, RoarrLoggerService],
     };
   }
 
@@ -34,17 +34,17 @@ export class RoarrLoggerCoreModule {
     const provider: Provider = {
       inject: [MODULE_OPTIONS],
       provide: MODULE_TOKEN,
-      useFactory: (options: ModuleOptions) => new Service(options),
+      useFactory: (options: ModuleOptions) => new RoarrLoggerService(options),
     };
 
     return {
-      exports: [provider, Service],
+      exports: [provider, RoarrLoggerService],
       imports: options.imports,
       module: RoarrLoggerCoreModule,
       providers: [
         ...this.createAsyncProviders(options),
         provider,
-        Service,
+        RoarrLoggerService,
       ],
     };
   }

@@ -26,24 +26,24 @@ let RoarrLoggerCoreModule = RoarrLoggerCoreModule_1 = class RoarrLoggerCoreModul
         const provider = (0, provider_1.createProvider)(options);
         return {
             module: RoarrLoggerCoreModule_1,
-            exports: [provider, service_1.Service],
-            providers: [provider, service_1.Service],
+            exports: [provider, service_1.RoarrLoggerService],
+            providers: [provider, service_1.RoarrLoggerService],
         };
     }
     static forRootAsync(options) {
         const provider = {
             inject: [constants_1.MODULE_OPTIONS],
             provide: constants_1.MODULE_TOKEN,
-            useFactory: (options) => new service_1.Service(options),
+            useFactory: (options) => new service_1.RoarrLoggerService(options),
         };
         return {
-            exports: [provider, service_1.Service],
+            exports: [provider, service_1.RoarrLoggerService],
             imports: options.imports,
             module: RoarrLoggerCoreModule_1,
             providers: [
                 ...this.createAsyncProviders(options),
                 provider,
-                service_1.Service,
+                service_1.RoarrLoggerService,
             ],
         };
     }
