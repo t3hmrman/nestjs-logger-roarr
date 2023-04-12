@@ -9,7 +9,7 @@
   ],
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Roarr integration for NestJS Logging (compatible with ConsoleLogger and LoggerService)",
   "repository": {
     "type": "git",
