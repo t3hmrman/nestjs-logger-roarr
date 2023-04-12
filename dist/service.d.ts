@@ -5,7 +5,7 @@ export declare class RoarrLoggerService extends ConsoleLogger implements OnAppli
     readonly opts?: ModuleOptions | undefined;
     app: string;
     private static singleton;
-    logger: RoarrLogger;
+    protected _logger: RoarrLogger;
     protected onClose: () => Promise<void>;
     protected ctx: Map<string, any>;
     protected logLevel: LogLevel;

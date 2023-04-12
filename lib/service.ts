@@ -20,7 +20,7 @@ export class RoarrLoggerService extends ConsoleLogger implements OnApplicationSh
   public app = 'nestjs-logger-roarr';
   private static singleton: RoarrLoggerService;
 
-  public logger: RoarrLogger;
+  protected _logger: RoarrLogger;
   protected onClose: () => Promise<void> = () => Promise.resolve();
   protected ctx: Map<string, any> = new Map();
   protected logLevel: LogLevel = 'log';
@@ -44,7 +44,7 @@ export class RoarrLoggerService extends ConsoleLogger implements OnApplicationSh
     this.logLevelNum = LOG_LEVEL_LOOKUP[this.logLevel] ?? LOG_LEVEL_LOOKUP['log'];
 
     // Extend existing context with more
-    this.logger = BASE_ROARR_LOGGER.child({
+    this._logger = BASE_ROARR_LOGGER.child({
       ...Object.fromEntries(this.ctx),
     });
   }
@@ -96,23 +96,23 @@ export class RoarrLoggerService extends ConsoleLogger implements OnApplicationSh
 
       switch (lvl) {
         case LOG_LEVEL_LOOKUP['debug']:
-          this.logger?.debug(ctx, message);
+          this._logger?.debug(ctx, message);
           break;
 
         case LOG_LEVEL_LOOKUP['log']:
-          this.logger?.info(ctx, message);
+          this._logger?.info(ctx, message);
           break;
 
         case LOG_LEVEL_LOOKUP['warn']:
-          this.logger?.warn(ctx, message);
+          this._logger?.warn(ctx, message);
           break;
 
         case LOG_LEVEL_LOOKUP['error']:
-          this.logger?.error(ctx, message);
+          this._logger?.error(ctx, message);
           break;
 
         case LOG_LEVEL_LOOKUP['verbose']:
-          this.logger?.trace(ctx, message);
+          this._logger?.trace(ctx, message);
           break;
       }
     });
@@ -120,7 +120,7 @@ export class RoarrLoggerService extends ConsoleLogger implements OnApplicationSh
 
   // Handle application shutdown
   async onApplicationShutdown(signal?: string) {
-    this.logger?.info("application shutdown detected...");
+    this._logger?.info("application shutdown detected...");
     if (this.onClose) { await this.onClose(); }
   }
 }

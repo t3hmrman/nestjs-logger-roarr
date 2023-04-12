@@ -56,7 +56,7 @@ let RoarrLoggerService = RoarrLoggerService_1 = class RoarrLoggerService extends
             }
         }
         this.logLevelNum = (_a = LOG_LEVEL_LOOKUP[this.logLevel]) !== null && _a !== void 0 ? _a : LOG_LEVEL_LOOKUP['log'];
-        this.logger = roarr_1.Roarr.child(Object.assign({}, Object.fromEntries(this.ctx)));
+        this._logger = roarr_1.Roarr.child(Object.assign({}, Object.fromEntries(this.ctx)));
     }
     static sharedInstance(options) {
         if (!RoarrLoggerService_1.singleton) {
@@ -99,19 +99,19 @@ let RoarrLoggerService = RoarrLoggerService_1 = class RoarrLoggerService extends
             };
             switch (lvl) {
                 case LOG_LEVEL_LOOKUP['debug']:
-                    (_a = this.logger) === null || _a === void 0 ? void 0 : _a.debug(ctx, message);
+                    (_a = this._logger) === null || _a === void 0 ? void 0 : _a.debug(ctx, message);
                     break;
                 case LOG_LEVEL_LOOKUP['log']:
-                    (_b = this.logger) === null || _b === void 0 ? void 0 : _b.info(ctx, message);
+                    (_b = this._logger) === null || _b === void 0 ? void 0 : _b.info(ctx, message);
                     break;
                 case LOG_LEVEL_LOOKUP['warn']:
-                    (_c = this.logger) === null || _c === void 0 ? void 0 : _c.warn(ctx, message);
+                    (_c = this._logger) === null || _c === void 0 ? void 0 : _c.warn(ctx, message);
                     break;
                 case LOG_LEVEL_LOOKUP['error']:
-                    (_d = this.logger) === null || _d === void 0 ? void 0 : _d.error(ctx, message);
+                    (_d = this._logger) === null || _d === void 0 ? void 0 : _d.error(ctx, message);
                     break;
                 case LOG_LEVEL_LOOKUP['verbose']:
-                    (_e = this.logger) === null || _e === void 0 ? void 0 : _e.trace(ctx, message);
+                    (_e = this._logger) === null || _e === void 0 ? void 0 : _e.trace(ctx, message);
                     break;
             }
         });
@@ -119,7 +119,7 @@ let RoarrLoggerService = RoarrLoggerService_1 = class RoarrLoggerService extends
     onApplicationShutdown(signal) {
         var _a;
         return __awaiter(this, void 0, void 0, function* () {
-            (_a = this.logger) === null || _a === void 0 ? void 0 : _a.info("application shutdown detected...");
+            (_a = this._logger) === null || _a === void 0 ? void 0 : _a.info("application shutdown detected...");
             if (this.onClose) {
                 yield this.onClose();
             }
