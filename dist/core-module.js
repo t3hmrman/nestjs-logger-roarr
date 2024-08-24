@@ -78,8 +78,8 @@ let RoarrLoggerCoreModule = RoarrLoggerCoreModule_1 = class RoarrLoggerCoreModul
         };
     }
 };
-RoarrLoggerCoreModule = RoarrLoggerCoreModule_1 = __decorate([
+exports.RoarrLoggerCoreModule = RoarrLoggerCoreModule;
+exports.RoarrLoggerCoreModule = RoarrLoggerCoreModule = RoarrLoggerCoreModule_1 = __decorate([
     (0, common_1.Global)(),
     (0, common_1.Module)({})
 ], RoarrLoggerCoreModule);
-exports.RoarrLoggerCoreModule = RoarrLoggerCoreModule;

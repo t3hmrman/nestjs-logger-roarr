@@ -33,6 +33,7 @@ const LOG_LEVEL_LOOKUP = {
     'log': 30,
     'warn': 40,
     'error': 50,
+    'fatal': 60,
 };
 let RoarrLoggerService = RoarrLoggerService_1 = class RoarrLoggerService extends common_1.ConsoleLogger {
     constructor(opts) {
@@ -117,8 +118,8 @@ let RoarrLoggerService = RoarrLoggerService_1 = class RoarrLoggerService extends
         });
     }
     onApplicationShutdown(signal) {
-        var _a;
         return __awaiter(this, void 0, void 0, function* () {
+            var _a;
             (_a = this._logger) === null || _a === void 0 ? void 0 : _a.info("application shutdown detected...");
             if (this.onClose) {
                 yield this.onClose();
@@ -126,9 +127,9 @@ let RoarrLoggerService = RoarrLoggerService_1 = class RoarrLoggerService extends
         });
     }
 };
-RoarrLoggerService = RoarrLoggerService_1 = __decorate([
+exports.RoarrLoggerService = RoarrLoggerService;
+exports.RoarrLoggerService = RoarrLoggerService = RoarrLoggerService_1 = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, common_1.Inject)(constants_1.MODULE_OPTIONS)),
     __metadata("design:paramtypes", [types_1.ModuleOptions])
 ], RoarrLoggerService);
-exports.RoarrLoggerService = RoarrLoggerService;

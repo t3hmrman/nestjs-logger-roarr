@@ -13,6 +13,7 @@ const LOG_LEVEL_LOOKUP: Record<LogLevel, number> = {
   'log': 30,     // 'info' in roarr terms
   'warn': 40,    // 'warn' in roarr terms
   'error': 50,   // 'error' in roarr terms
+  'fatal': 60,   // 'fatal' in roarr terms
 };
 
 @Injectable()

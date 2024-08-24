@@ -24,7 +24,7 @@ let RoarrLoggerModule = RoarrLoggerModule_1 = class RoarrLoggerModule {
         };
     }
 };
-RoarrLoggerModule = RoarrLoggerModule_1 = __decorate([
+exports.RoarrLoggerModule = RoarrLoggerModule;
+exports.RoarrLoggerModule = RoarrLoggerModule = RoarrLoggerModule_1 = __decorate([
     (0, common_1.Module)({})
 ], RoarrLoggerModule);
-exports.RoarrLoggerModule = RoarrLoggerModule;

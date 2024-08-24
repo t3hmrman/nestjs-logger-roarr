@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createProvider = void 0;
+exports.createProvider = createProvider;
 const constants_1 = require("./constants");
 const service_1 = require("./service");
 function createProvider(options) {
@@ -9,4 +9,3 @@ function createProvider(options) {
         useValue: (options === null || options === void 0 ? void 0 : options.useSingleton) ? service_1.RoarrLoggerService.sharedInstance(options) : new service_1.RoarrLoggerService(options),
     };
 }
-exports.createProvider = createProvider;
