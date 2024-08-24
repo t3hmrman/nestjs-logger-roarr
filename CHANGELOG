@@ -1,6 +1,45 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 2024-08-24
+
+### Bug Fixes
+
+- Repo location
+- Package path
+- Packaging for release workflow
+- Generate changelog before version bump
+
+### Documentation
+
+- Add note about setting ROARR_LOG
+- Fix packaging comments in Makefile
+
+### Features
+
+- Update node, supported nestjs version
+
+### Miscellaneous Tasks
+
+- Initial commit, ready to release v0.1.0
+- Mark package as non-private
+- Add makefile targets for version bumping
+- Update CHANGELOG
+- Update CHANGELOG
+- Update CHANGELOG
+- Allow @nestjs/common peer dep ^10
+
+### Refactor
+
+- Rename Service to RoarrLoggerService
+- Make internal logger protected
+
+### Workflow
+
+- Fix Makefile
+- Fix pack setup
+- Update CHANGELOG before release
+
 ## [1.0.0] - 2023-04-12
 
 ### Refactor
