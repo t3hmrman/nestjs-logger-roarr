@@ -31,7 +31,7 @@
     "roarr"
   ],
   "peerDependencies": {
-    "@nestjs/common": "^9"
+    "@nestjs/common": "^9 || ^10"
   },
   "author": "vados <vados@vadosware.io>",
   "license": "MIT",
